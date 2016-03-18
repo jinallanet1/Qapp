@@ -22,6 +22,7 @@ app.use('/api', expressJwt({ secret: settings.JWTPrivateKey }));
 app.use('/api', function(req, res, next) {
 	var authorization = req.header("authorization");
 	var session = JSON.parse( new Buffer((authorization.split(' ')[1]).split('.')[1], 'base64').toString());
+	console.log(session);
     res.locals.session = session;
     next();
 });
